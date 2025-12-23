@@ -23,21 +23,34 @@ exports.handler = async (event) => {
         // Send to Google Sheets via Apps Script
         const googleScriptUrl = process.env.GOOGLE_SCRIPT_URL;
         
+        console.log('Google Script URL configured:', !!googleScriptUrl);
+        
         if (googleScriptUrl) {
-            try {
-                await fetch(googleScriptUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        email,
-                        timestamp: new Date().toISOString(),
-                        source: 'avocado-secret'
-                    }),
-                });
-            } catch (err) {
-                // Log error but don't fail the request
-                console.error('Failed to save to Google Sheets:', err);
+            const payload = { 
+                email,
+                timestamp: new Date().toISOString(),
+                source: 'avocado-secret'
+            };
+            
+            console.log('Sending to Google Sheets:', payload);
+            
+            // Google Apps Script needs redirect: 'follow' to work properly
+            const response = await fetch(googleScriptUrl, {
+                method: 'POST',
+                redirect: 'follow',
+                headers: { 
+                    'Content-Type': 'text/plain',  // Apps Script handles this better
+                },
+                body: JSON.stringify(payload),
+            });
+            
+            console.log('Google Sheets response status:', response.status);
+            
+            if (!response.ok) {
+                console.error('Google Sheets error:', await response.text());
             }
+        } else {
+            console.warn('GOOGLE_SCRIPT_URL not configured');
         }
 
         return {
