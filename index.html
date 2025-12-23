@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support My Work</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <main class="container">
+        <header class="hero">
+            <div class="badge">✦ Join the community</div>
+            <h1>Support<br><em>My Work</em></h1>
+            <p class="subtitle">Get exclusive updates, resources, and a special welcome gift delivered straight to your inbox.</p>
+        </header>
+
+        <section class="card email-section">
+            <div class="card-content">
+                <h2>Get the Free Guide</h2>
+                <p>Enter your email and receive an exclusive PDF guide instantly.</p>
+                
+                <form id="email-form" class="email-form">
+                    <div class="input-group">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="your@email.com" 
+                            required
+                            autocomplete="email"
+                        >
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Send me the guide</span>
+                            <span class="btn-loading">
+                                <svg class="spinner" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="10"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <p class="form-note">No spam, ever. Unsubscribe anytime.</p>
+                </form>
+                
+                <div id="email-success" class="success-message" hidden>
+                    <div class="success-icon">✓</div>
+                    <h3>Check your inbox!</h3>
+                    <p>Your guide is on its way. It should arrive within a few minutes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card donate-section">
+            <div class="card-content">
+                <h2>Support with a Donation</h2>
+                <p>If my work has helped you, consider buying me a coffee. Every bit helps!</p>
+                
+                <div class="donation-options">
+                    <button class="donate-btn" data-amount="500" data-label="$5">
+                        <span class="donate-emoji">☕</span>
+                        <span class="donate-label">$5</span>
+                    </button>
+                    <button class="donate-btn" data-amount="1000" data-label="$10">
+                        <span class="donate-emoji">🍕</span>
+                        <span class="donate-label">$10</span>
+                    </button>
+                    <button class="donate-btn" data-amount="2500" data-label="$25">
+                        <span class="donate-emoji">🎁</span>
+                        <span class="donate-label">$25</span>
+                    </button>
+                    <button class="donate-btn custom" data-custom="true">
+                        <span class="donate-emoji">💝</span>
+                        <span class="donate-label">Custom</span>
+                    </button>
+                </div>
+                
+                <div id="custom-amount-container" class="custom-amount" hidden>
+                    <div class="input-group">
+                        <span class="currency-symbol">$</span>
+                        <input 
+                            type="number" 
+                            id="custom-amount" 
+                            min="1" 
+                            max="999" 
+                            placeholder="Amount"
+                        >
+                        <button id="custom-donate-btn" class="btn btn-secondary">Donate</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Made with care · <a href="#">Privacy Policy</a></p>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

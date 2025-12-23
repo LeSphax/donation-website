@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - Donation Successful</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-card {
+            text-align: center;
+            padding: 48px;
+            max-width: 480px;
+        }
+        
+        .success-card .success-icon {
+            width: 80px;
+            height: 80px;
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+        
+        .success-card h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        
+        .success-card h1 em {
+            color: var(--color-accent);
+            font-style: italic;
+        }
+        
+        .success-card p {
+            color: var(--color-text-muted);
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confetti-fall 4s ease-out forwards;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <main class="success-page">
+        <div class="card success-card">
+            <div class="success-icon">🎉</div>
+            <h1>Thank <em>You!</em></h1>
+            <p>Your donation means the world to me. Your support helps me continue creating and sharing valuable content.</p>
+            <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
+    </main>
+
+    <script>
+        // Create confetti effect
+        const colors = ['#ff6b35', '#22c55e', '#8b5cf6', '#f59e0b', '#ec4899'];
+        
+        for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(confetti);
+                
+                // Remove after animation
+                setTimeout(() => confetti.remove(), 6000);
+            }, i * 50);
+        }
+    </script>
+</body>
+</html>
+
