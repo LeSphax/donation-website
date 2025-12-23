@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You! - Donation Successful</title>
+    <title>Thank You! - You're Amazing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .success-page {
@@ -27,6 +27,7 @@
             height: 80px;
             font-size: 2.5rem;
             margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
         }
         
         .success-card h1 {
@@ -47,21 +48,21 @@
             font-size: 1.1rem;
         }
         
-        .confetti {
+        .avocado-float {
             position: fixed;
-            width: 10px;
-            height: 10px;
-            top: -10px;
-            animation: confetti-fall 4s ease-out forwards;
+            font-size: 2rem;
+            top: -50px;
+            animation: avocado-fall 5s ease-out forwards;
+            opacity: 0.9;
         }
         
-        @keyframes confetti-fall {
+        @keyframes avocado-fall {
             0% {
                 transform: translateY(0) rotate(0deg);
-                opacity: 1;
+                opacity: 0.9;
             }
             100% {
-                transform: translateY(100vh) rotate(720deg);
+                transform: translateY(110vh) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -72,32 +73,31 @@
     
     <main class="success-page">
         <div class="card success-card">
-            <div class="success-icon">🎉</div>
-            <h1>Thank <em>You!</em></h1>
-            <p>Your donation means the world to me. Your support helps me continue creating and sharing valuable content.</p>
+            <div class="success-icon">🥑</div>
+            <h1>You're <em>Amazing!</em></h1>
+            <p>Thank you for your support! Your generosity helps me keep experimenting and sharing kitchen hacks with the world.</p>
             <a href="/" class="btn btn-primary">Back to Home</a>
         </div>
     </main>
 
     <script>
-        // Create confetti effect
-        const colors = ['#ff6b35', '#22c55e', '#8b5cf6', '#f59e0b', '#ec4899'];
+        // Create falling avocado effect
+        const emojis = ['🥑', '💚', '✨', '🥑', '🌿'];
         
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 30; i++) {
             setTimeout(() => {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
-                confetti.style.animationDelay = Math.random() * 0.5 + 's';
-                document.body.appendChild(confetti);
+                const avo = document.createElement('div');
+                avo.className = 'avocado-float';
+                avo.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                avo.style.left = Math.random() * 100 + 'vw';
+                avo.style.animationDuration = (4 + Math.random() * 3) + 's';
+                avo.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(avo);
                 
                 // Remove after animation
-                setTimeout(() => confetti.remove(), 6000);
-            }, i * 50);
+                setTimeout(() => avo.remove(), 8000);
+            }, i * 80);
         }
     </script>
 </body>
 </html>
-
