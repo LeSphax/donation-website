@@ -27,9 +27,8 @@ emailForm.addEventListener('submit', async (e) => {
         const data = await response.json();
         
         if (response.ok) {
-            // Hide form, show success
-            emailForm.hidden = true;
-            emailSuccess.hidden = false;
+            // Redirect to the secret page
+            window.location.href = '/secret.html';
         } else {
             throw new Error(data.error || 'Something went wrong');
         }
